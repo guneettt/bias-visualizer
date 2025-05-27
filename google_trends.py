@@ -1,16 +1,15 @@
 from pytrends.request import TrendReq
 
-def fetch_google_trends(keyword):
+def fetch_google_trends(keyword: str) -> int:
     pytrends = TrendReq(hl='en-US', tz=360, retries=3, backoff_factor=2)
     pytrends.build_payload([keyword], cat=0, timeframe='now 7-d', geo='', gprop='')
-    
     data = pytrends.interest_over_time()
+    
     if not data.empty:
-        data = data.drop(columns=["isPartial"])
-        print("Google Trends data for:", keyword)
-        print(data.tail())  # Show last few rows
+        return int(data[keyword].mean())  # Return average interest over time
     else:
-        print("No data found.")
+        return 0
+
 
 if __name__ == "__main__":
     topic = input("Enter a keyword/topic: ")

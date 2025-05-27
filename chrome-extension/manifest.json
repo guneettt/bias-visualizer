@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Bias Visualizer",
+  "description": "Highlight text to compare its popularity on Google Trends vs Reddit.",
+  "version": "1.0",
+  "permissions": ["activeTab", "scripting", "storage", "clipboardRead"],
+  "host_permissions": ["<all_urls>"],
+
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
+}

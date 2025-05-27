@@ -1,35 +1,30 @@
 import praw
 from datetime import datetime, timedelta
 
-CLIENT_ID = "ab"
-CLIENT_SECRET = "ab"
-USER_AGENT = "an"
+# ✅ Define reddit at module level
+reddit = praw.Reddit(
+    client_id="fv6tgPssxe9R3jqfAAMPLA",
+    client_secret="Vgzta3doB218Uf90_Epl7UROzRbPA",
+    user_agent="Significant_Camp_700",
+    username="Significant_Camp_700",
+    password="Harrypotter@007"
+)
 
-def fetch_reddit_data(keyword):
-    # Set up Reddit API connection
-    reddit = praw.Reddit(
-        client_id=CLIENT_ID,
-        client_secret=CLIENT_SECRET,
-        user_agent=USER_AGENT
-    )
-
-    # Time window: last 7 days
+def fetch_reddit_data(keyword: str) -> int:
     time_limit = datetime.utcnow() - timedelta(days=7)
     count = 0
-    posts = []
 
-    # Search in popular subreddits
-    for submission in reddit.subreddit("all").search(keyword, sort="new", limit=100):
-        created_time = datetime.utcfromtimestamp(submission.created_utc)
-        if created_time > time_limit:
-            count += 1
-            posts.append((submission.title, created_time.strftime("%Y-%m-%d %H:%M")))
+    try:
+        for submission in reddit.subreddit("all").search(keyword, sort="new", limit=100):
+            created_time = datetime.utcfromtimestamp(submission.created_utc)
+            if created_time > time_limit:
+                count += 1
+    except Exception as e:
+        print("❌ Reddit fetch error:", str(e))
 
-    print(f"\nReddit mentions of '{keyword}' in last 7 days: {count}")
-    for title, time in posts[:5]:  # show only top 5
-        print(f"- [{time}] {title}")
+    return count
 
 if __name__ == "__main__":
-    topic = input("Enter a keyword/topic: ")
-    fetch_reddit_data(topic)
-# This script fetches Reddit posts mentioning a given keyword or topic in the last 7 days.
+    # ✅ Now reddit is accessible here
+    for submission in reddit.subreddit("worldnews").hot(limit=1):
+        print(submission.title)

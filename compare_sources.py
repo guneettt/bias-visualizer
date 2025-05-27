@@ -4,9 +4,9 @@ from datetime import datetime, timedelta
 import matplotlib.pyplot as plt
 
 # ====== Reddit Config ======
-CLIENT_ID = "an"
-CLIENT_SECRET = "an"
-USER_AGENT = "an"
+CLIENT_ID = "fv6tgPssxe9R3jqfAAMPLA"
+CLIENT_SECRET = "Vgzta3doB218Uf90_Epl7UROzRbPA"
+USER_AGENT = "Significant_Camp_700"
 
 def get_google_trends(keyword):
     pytrends = TrendReq(hl='en-US', tz=360)
