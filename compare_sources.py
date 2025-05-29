@@ -1,12 +1,5 @@
 from pytrends.request import TrendReq
-import praw
-from datetime import datetime, timedelta
 import matplotlib.pyplot as plt
-
-# ====== Reddit Config ======
-CLIENT_ID = "fv6tgPssxe9R3jqfAAMPLA"
-CLIENT_SECRET = "Vgzta3doB218Uf90_Epl7UROzRbPA"
-USER_AGENT = "Significant_Camp_700"
 
 def get_google_trends(keyword):
     pytrends = TrendReq(hl='en-US', tz=360)
@@ -16,19 +9,8 @@ def get_google_trends(keyword):
         return data[keyword]
     return None
 
-def get_reddit_mentions(keyword):
-    reddit = praw.Reddit(client_id=CLIENT_ID, client_secret=CLIENT_SECRET, user_agent=USER_AGENT)
-    time_limit = datetime.utcnow() - timedelta(days=7)
-    count = 0
-    for submission in reddit.subreddit("all").search(keyword, sort="new", limit=100):
-        created_time = datetime.utcfromtimestamp(submission.created_utc)
-        if created_time > time_limit:
-            count += 1
-    return count
-
 def compare_trends(keyword):
     google_data = get_google_trends(keyword)
-    reddit_count = get_reddit_mentions(keyword)
 
     if google_data is None:
         print("No Google Trends data found.")
@@ -42,10 +24,7 @@ def compare_trends(keyword):
     plt.xlabel("Date")
     plt.ylabel("Interest (0–100)")
 
-    # Plot Reddit Mentions (bar)
     plt.subplot(1, 2, 2)
-    plt.bar(["Reddit"], [reddit_count], color="tomato")
-    plt.title("Reddit Mentions (7 Days)")
     plt.ylabel("Mentions")
 
     plt.tight_layout()

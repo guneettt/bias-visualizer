@@ -2,7 +2,6 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from google_trends import fetch_google_trends
-from reddit_scraper import fetch_reddit_data
 
 app = FastAPI()
 
@@ -28,11 +27,9 @@ def analyze(query: Query):
 
     try:
         google_score = fetch_google_trends(query.keyword)
-        reddit_score = fetch_reddit_data(query.keyword)
 
         return {
             "google_interest": google_score,
-            "reddit_mentions": reddit_score
         }
     except Exception as e:
         print("❌ Error:", str(e))

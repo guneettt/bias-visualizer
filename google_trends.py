@@ -10,7 +10,6 @@ def fetch_google_trends(keyword: str) -> int:
     else:
         return 0
 
-
 if __name__ == "__main__":
     topic = input("Enter a keyword/topic: ")
     fetch_google_trends(topic)

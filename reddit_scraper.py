@@ -6,8 +6,6 @@ reddit = praw.Reddit(
     client_id="fv6tgPssxe9R3jqfAAMPLA",
     client_secret="Vgzta3doB218Uf90_Epl7UROzRbPA",
     user_agent="Significant_Camp_700",
-    username="Significant_Camp_700",
-    password="Harrypotter@007"
 )
 
 def fetch_reddit_data(keyword: str) -> int:
