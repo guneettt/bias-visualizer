@@ -50,9 +50,19 @@
         background-color: #ffffff;
         border: 1px solid #ddd;
         border-radius: 4px;
-        padding: 10px;
-        min-height: 40px;
+        padding: 6px 10px;
         white-space: pre-wrap;
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+      }
+
+
+      #trendsChart {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px;
       }
     </style>
   </head>
@@ -61,6 +71,13 @@
     <p id="selected-text">Highlight any text on a page to analyze it here...</p>
     <button id="analyze-btn">Compare Bias</button>
     <div id="result"></div>
+    <canvas id="trendsChart" width="300" height="200" style="margin-top: 10px;"></canvas>
+
+    <!-- Include Chart.js -->
+    <script src="chart.min.js"></script>
+    <script src="chart.min.js"></script>
+    <script src="chartjs-plugin-datalabels.min.js"></script>
+
     <script src="popup.js"></script>
   </body>
 </html>

@@ -26,10 +26,15 @@ def analyze(query: Query):
     print("✅ Received:", query.keyword)
 
     try:
-        google_score = fetch_google_trends(query.keyword)
+        timeline = fetch_google_trends(query.keyword)
+
+        # Calculate average interest
+        values = [point['value'] for point in timeline if point['value'] is not None]
+        avg_interest = sum(values) // len(values) if values else 0
 
         return {
-            "google_interest": google_score,
+            "google_interest": avg_interest,
+            "timeline": timeline
         }
     except Exception as e:
         print("❌ Error:", str(e))
