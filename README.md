@@ -6,7 +6,7 @@ This is a **portfolio project** designed to demonstrate real-world API integrati
 
 ---
 
-## 📌 GitHub Repository Description  
+## 📌 Description  
 **A Chrome Extension + FastAPI web app to visualize real-world interest (Google Trends) vs curated timelines — highlighting digital media bias in trending topics. Built for my portfolio.**
 
 ---
