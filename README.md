@@ -36,6 +36,8 @@ This is a **portfolio project** designed to demonstrate real-world API integrati
 
 > Highlight any text → Click “Compare Bias” → View the Google Trends chart
 
+![Demo](demo.gif)
+
 ---
 
 ## 🚀 Getting Started
