@@ -31,7 +31,7 @@ def analyze(query: Query):
         # Calculate average interest
         values = [point['value'] for point in timeline if point['value'] is not None]
         avg_interest = sum(values) // len(values) if values else 0
-
+        
         return {
             "google_interest": avg_interest,
             "timeline": timeline

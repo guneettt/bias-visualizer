@@ -74,18 +74,60 @@ function renderBarChart(data) {
       datasets: [{
         label: "Search Interest (Past 7 Days)",
         data: data.map(point => point.value),
-        backgroundColor: "rgb(212, 212, 212)",
-        borderColor: "rgb(244, 244, 244)",
-        borderWidth: 1
+        backgroundColor: "rgba(29, 191, 115, 0.85)", // accent green w/ slight transparency
+        borderRadius: 6, // ✅ rounded bar corners
+        barThickness: 24, // ✅ thinner bars
+        borderSkipped: false
       }]
     },
     options: {
       responsive: true,
+      animation: {
+        duration: 700,
+        easing: 'easeOutQuart'
+      },
       scales: {
-        y: { beginAtZero: true }
+        y: {
+          beginAtZero: true,
+          grid: {
+            color: "#333"
+          },
+          ticks: {
+            color: "#ffffff",              // ✅ White color
+            font: {
+              family: "Poppins, sans-serif", // ✅ Match popup font
+              size: 12,
+              weight: "500"
+            }
+          }
+        },
+        x: {
+          grid: {
+            display: false
+          },
+          ticks: {
+            color: "#ffffff",              // ✅ White color for dates
+            font: {
+              family: "Poppins, sans-serif", // ✅ Match popup font
+              size: 11,
+              weight: "400"
+            },
+            maxRotation: 45,
+            minRotation: 45
+          }
+        }
       },
       plugins: {
-        legend: { display: false }
+        legend: {
+          display: false
+        },
+        tooltip: {
+          backgroundColor: "#2b2b2b",
+          titleColor: "#fff",
+          bodyColor: "#1dbf73",
+          borderColor: "#1dbf73",
+          borderWidth: 1
+        }
       }
     }
   });

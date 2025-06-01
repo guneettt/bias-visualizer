@@ -50,15 +50,18 @@
         width: 100%;
         padding: 12px;
         font-size: 15px;
+        font-family: 'Poppins', sans-serif;   
         background-color: var(--accent);
         color: #fff;
         border: none;
-        border-radius: 8px;
+        border-radius: 12px;
         cursor: pointer;
-        font-weight: 600;
+        font-weight: 700;                   
+        letter-spacing: 0.5px;                
         transition: all 0.25s ease;
         margin-bottom: 16px;
       }
+
 
       button:hover {
         background-color: #17a15e;
@@ -113,7 +116,7 @@
     <div id="page2" class="page">
       <div class="card">
         <div class="trend-line">
-          <span class="trend-label">Google Trends:</span>
+          <span class="trend-label">Weekly Average:</span>
           <span class="trend-score" id="trend-score">0/100</span>
         </div>
         <canvas id="trendsChart" width="300" height="200"></canvas>
