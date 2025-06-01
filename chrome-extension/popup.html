@@ -37,15 +37,14 @@
 
       #selected-text {
         font-size: 14px;
-        color: var(--accent);  /* ✅ Green color */
-        text-align: center;    /* ✅ Centered */
+        color: var(--accent);
+        text-align: center;
         font-weight: 600;
         margin-bottom: 16px;
         background-color: transparent;
         border: none;
         padding: 0;
       }
-
 
       button {
         width: 100%;
@@ -80,15 +79,32 @@
         padding: 5px;
         height: 200px;
       }
+
+      .page {
+        display: none;
+      }
+
+      .page.active {
+        display: block;
+      }
     </style>
   </head>
   <body>
-    <div class="card">
-      <h3>Bias Visualizer</h3>
-      <p id="selected-text">Highlighted text: Taylor Swift</p>
-      <button id="analyze-btn">Compare Bias</button>
-      <div id="result"></div>
-      <canvas id="trendsChart" width="300" height="200"></canvas>
+    <!-- Page 1 -->
+    <div id="page1" class="page active">
+      <div class="card">
+        <h3>Bias Visualizer</h3>
+        <p id="selected-text">Highlighted text: Taylor Swift</p>
+        <button id="analyze-btn">Compare Bias</button>
+      </div>
+    </div>
+
+    <!-- Page 2 -->
+    <div id="page2" class="page">
+      <div class="card">
+        <div id="result"></div>
+        <canvas id="trendsChart" width="300" height="200"></canvas>
+      </div>
     </div>
 
     <script src="chart.min.js"></script>

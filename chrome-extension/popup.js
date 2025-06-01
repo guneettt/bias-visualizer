@@ -1,10 +1,11 @@
-// Wait for the popup DOM to fully load
 document.addEventListener("DOMContentLoaded", () => {
   const selectedTextElement = document.getElementById("selected-text");
   const resultElement = document.getElementById("result");
   const analyzeBtn = document.getElementById("analyze-btn");
+  const page1 = document.getElementById("page1");
+  const page2 = document.getElementById("page2");
 
-  // 🔹 1. Load highlighted text from Chrome storage
+  // 🔹 Load highlighted text from Chrome storage
   chrome.storage.local.get(["selectedText"], (result) => {
     const text = result.selectedText;
     if (text && text.trim().length > 0) {
@@ -14,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // 🔹 2. Handle "Compare Bias" button click
+  // 🔹 Handle "Compare Bias" button click
   analyzeBtn.addEventListener("click", async () => {
     const keyword = selectedTextElement.textContent;
 
@@ -38,11 +39,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const data = await response.json();
 
+      // ✅ Switch to Page 2
+      page1.classList.remove("active");
+      page2.classList.add("active");
+
+      // ✅ Render Results
       resultElement.innerHTML = `
         <p><strong>Google Trends:</strong> ${data.google_interest}/100</p>
       `;
 
-      // 🔹 3. Render bar chart using timeline data
+      // ✅ Render Bar Chart
       if (data.timeline && Array.isArray(data.timeline)) {
         console.log("🧪 Timeline data:", data.timeline);
         renderBarChart(data.timeline);
@@ -57,10 +63,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // 🔹 Chart rendering function
 function renderBarChart(data) {
-  
   const ctx = document.getElementById("trendsChart").getContext("2d");
 
-  // Clear any existing chart instance (important on repeated fetch)
   if (window.trendsChartInstance) {
     window.trendsChartInstance.destroy();
   }
