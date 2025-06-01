@@ -59,7 +59,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// 🔹 Chart rendering function
 function renderBarChart(data) {
   const ctx = document.getElementById("trendsChart").getContext("2d");
 
@@ -74,9 +73,9 @@ function renderBarChart(data) {
       datasets: [{
         label: "Search Interest (Past 7 Days)",
         data: data.map(point => point.value),
-        backgroundColor: "rgba(29, 191, 115, 0.85)", // accent green w/ slight transparency
-        borderRadius: 6, // ✅ rounded bar corners
-        barThickness: 24, // ✅ thinner bars
+        backgroundColor: "rgba(29, 191, 115, 0.85)",
+        borderRadius: 6,
+        barThickness: 24,
         borderSkipped: false
       }]
     },
@@ -86,34 +85,66 @@ function renderBarChart(data) {
         duration: 700,
         easing: 'easeOutQuart'
       },
+      layout: {
+        padding: {
+          top: 2,
+          bottom: 0 // ⬅️ removed bottom space
+        }
+      },
       scales: {
         y: {
           beginAtZero: true,
+          title: {
+            display: true,
+            text: "Search Popularity",
+            align: "center",
+            color: "#ffffff",
+            font: {
+              family: "Poppins, sans-serif",
+              size: 9,
+              weight: "600"
+            },
+            padding: { bottom: 2 }
+          },
           grid: {
-            color: "#333"
+            color: "#333",
+            borderColor: "#ffffff" // ✅ White Y axis line
           },
           ticks: {
-            color: "#ffffff",              // ✅ White color
+            color: "#ffffff",
             font: {
-              family: "Poppins, sans-serif", // ✅ Match popup font
-              size: 12,
-              weight: "500"
+              family: "Poppins, sans-serif",
+              size: 8,
+              weight: "400"
             }
           }
         },
         x: {
+          title: {
+            display: true,
+            text: "Date",
+            align: "center", // ✅ Centered title
+            color: "#ffffff",
+            font: {
+              family: "Poppins, sans-serif",
+              size: 9,
+              weight: "600"
+            },
+            padding: { top: 2 }
+          },
           grid: {
-            display: false
+            display: false,
+            borderColor: "#ffffff" // ✅ White X axis line
           },
           ticks: {
-            color: "#ffffff",              // ✅ White color for dates
+            color: "#ffffff",
             font: {
-              family: "Poppins, sans-serif", // ✅ Match popup font
-              size: 11,
+              family: "Poppins, sans-serif",
+              size: 8,
               weight: "400"
             },
-            maxRotation: 45,
-            minRotation: 45
+            maxRotation: 30,
+            minRotation: 30
           }
         }
       },
