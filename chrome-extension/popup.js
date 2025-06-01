@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   const selectedTextElement = document.getElementById("selected-text");
-  const resultElement = document.getElementById("result");
   const analyzeBtn = document.getElementById("analyze-btn");
   const page1 = document.getElementById("page1");
   const page2 = document.getElementById("page2");
+  const trendScore = document.getElementById("trend-score");
 
   // 🔹 Load highlighted text from Chrome storage
   chrome.storage.local.get(["selectedText"], (result) => {
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const keyword = selectedTextElement.textContent;
 
     if (!keyword || keyword === "No text selected.") {
-      resultElement.innerHTML = `<p>Please highlight text before clicking.</p>`;
+      alert("Please highlight text before clicking Compare Bias.");
       return;
     }
 
@@ -43,12 +43,10 @@ document.addEventListener("DOMContentLoaded", () => {
       page1.classList.remove("active");
       page2.classList.add("active");
 
-      // ✅ Render Results
-      resultElement.innerHTML = `
-        <p><strong>Google Trends:</strong> ${data.google_interest}/100</p>
-      `;
+      // ✅ Show trend score
+      trendScore.textContent = `${data.google_interest}/100`;
 
-      // ✅ Render Bar Chart
+      // ✅ Render chart
       if (data.timeline && Array.isArray(data.timeline)) {
         console.log("🧪 Timeline data:", data.timeline);
         renderBarChart(data.timeline);
@@ -56,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     } catch (err) {
       console.error("❌ Fetch error:", err);
-      resultElement.innerHTML = `<p style="color:red;">Failed to get data. Is the API running?</p>`;
+      alert("Failed to get data. Is the API running?");
     }
   });
 });

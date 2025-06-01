@@ -64,20 +64,30 @@
         background-color: #17a15e;
       }
 
-      #result, canvas#trendsChart {
-        font-size: 13px;
-        background-color: #1c1c1c;
-        border: 1px solid #333;
-        border-radius: 8px;
-        padding: 10px;
-        width: 100%;
-        box-sizing: border-box;
-        margin-bottom: 12px;
+      .trend-line {
+        font-size: 16px;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      .trend-label {
+        color: white;
+      }
+
+      .trend-score {
+        color: var(--accent);
       }
 
       canvas#trendsChart {
+        background-color: #1c1c1c;
+        border: 1px solid #333;
+        border-radius: 8px;
         padding: 5px;
+        width: 100%;
+        box-sizing: border-box;
         height: 200px;
+        margin-top: 10px;
       }
 
       .page {
@@ -102,7 +112,10 @@
     <!-- Page 2 -->
     <div id="page2" class="page">
       <div class="card">
-        <div id="result"></div>
+        <div class="trend-line">
+          <span class="trend-label">Google Trends:</span>
+          <span class="trend-score" id="trend-score">0/100</span>
+        </div>
         <canvas id="trendsChart" width="300" height="200"></canvas>
       </div>
     </div>
