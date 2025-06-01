@@ -72,8 +72,8 @@ function renderBarChart(data) {
       datasets: [{
         label: "Search Interest (Past 7 Days)",
         data: data.map(point => point.value),
-        backgroundColor: "rgba(66, 133, 244, 0.6)",
-        borderColor: "rgba(66, 133, 244, 1)",
+        backgroundColor: "rgb(212, 212, 212)",
+        borderColor: "rgb(244, 244, 244)",
         borderWidth: 1
       }]
     },
