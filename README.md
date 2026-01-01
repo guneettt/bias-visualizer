@@ -1,13 +1,13 @@
-# 🧠 Bias Visualizer — Chrome Extension + API
+# 🧠 Bias Visualizer - Chrome Extension + API
 
-Bias Visualizer is a lightweight Chrome extension that allows users to highlight any text on a webpage and instantly compare its popularity across **Google Trends** (real-world interest) vs curated platforms. It's a fast, intuitive way to visualize how topics trend online — and where media attention might diverge from public interest.
+Bias Visualizer is a lightweight Chrome extension that allows users to highlight any text on a webpage and instantly compare its popularity across **Google Trends** (real-world interest) vs curated platforms. It's a fast, intuitive way to visualize how topics trend online - and where media attention might diverge from public interest.
 
 This is a **portfolio project** designed to demonstrate real-world API integration, frontend-backend communication, and full-stack product thinking.
 
 ---
 
 ## 📌 Description  
-**A Chrome Extension + FastAPI web app to visualize real-world interest (Google Trends) vs curated timelines — highlighting digital media bias in trending topics. Built for my portfolio.**
+**A Chrome Extension + FastAPI web app to visualize real-world interest (Google Trends) vs curated timelines - highlighting digital media bias in trending topics. Built for my portfolio.**
 
 ---
 
